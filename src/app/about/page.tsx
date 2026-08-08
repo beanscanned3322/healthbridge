@@ -68,6 +68,15 @@ export default function AboutPage() {
             <p style={{ fontFamily: "Playfair Display, serif", fontWeight: 700, fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--text-light)", marginBottom: 20 }}>
               Our Story
             </p>
+            <div className="flex flex-col items-center mb-8">
+   <img 
+    src="/cindy-zheng.jpg" 
+    alt="Cindy Zheng - Founder of HealthBridge" 
+    className="rounded-full w-48 h-48 object-cover shadow-lg"
+  />
+  <p className="text-sm text-gray-600 mt-2">Cindy Zheng, Founder</p>
+</div>
+            
 
             <p style={{ marginBottom: 28 }}>
               HealthBridge was founded by Cindy Zheng, who spent a summer at a rehabilitation center in Brooklyn. There, she watched elderly Chinese patients struggle to communicate their needs — not just because of language, but because the system wasn&apos;t built for them.
