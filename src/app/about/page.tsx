@@ -51,11 +51,11 @@ export default function AboutPage() {
               overflow: "hidden", 
               border: "1px solid var(--border)" 
             }}>
-              <img 
-                src="/cindyz.JPG" 
+              <img  
+                src="/team/cindyz.JPG" 
                 alt="Cindy Zheng - Founder of HealthBridge" 
                 style={{ width: "100%", height: "100%", objectFit: "cover" }} 
-              />
+              /> 
             </div>
           </div>
           {/* end sidebar */}
