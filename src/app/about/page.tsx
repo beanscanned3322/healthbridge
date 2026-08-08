@@ -52,7 +52,7 @@ export default function AboutPage() {
               border: "1px solid var(--border)" 
             }}>
               <img 
-                src="/cindyz.jpg" 
+                src="/cindyz.JPG" 
                 alt="Cindy Zheng - Founder of HealthBridge" 
                 style={{ width: "100%", height: "100%", objectFit: "cover" }} 
               />
