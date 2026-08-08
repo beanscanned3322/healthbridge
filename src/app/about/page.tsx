@@ -42,22 +42,20 @@ export default function AboutPage() {
       <section style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 24px" }}>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: 64, alignItems: "start" }} className="about-grid">
 
-          {/* Sidebar */}
+          {/* Sidebar with Cindy's photo */}
           <div style={{ position: "sticky", top: 120 }}>
-            <div style={{
-              width: "100%", aspectRatio: "4/5",
-              background: "linear-gradient(135deg, var(--mint) 0%, var(--cream-dark) 100%)",
-              borderRadius: 24, display: "flex", alignItems: "center", justifyContent: "center",
-              overflow: "hidden", border: "1px solid var(--border)",
+            <div style={{ 
+              width: "100%", 
+              aspectRatio: "4/5", 
+              borderRadius: 24, 
+              overflow: "hidden", 
+              border: "1px solid var(--border)" 
             }}>
-              <div style={{ textAlign: "center", padding: 24 }}>
-                <div style={{ width: 80, height: 80, borderRadius: "50%", background: "var(--forest)", margin: "0 auto 16px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                    <path d="M20 6C20 6 10 12 10 21C10 27.075 14.477 32 20 32C25.523 32 30 27.075 30 21C30 12 20 6 20 6Z" fill="white" opacity="0.9"/>
-                    <path d="M16 21H24M20 17V25" stroke="var(--forest)" strokeWidth="2" strokeLinecap="round"/>
-                  </svg>
-                </div>
-              </div>
+              <img 
+                src="/cindy-zheng.jpg" 
+                alt="Cindy Zheng - Founder of HealthBridge" 
+                style={{ width: "100%", height: "100%", objectFit: "cover" }} 
+              />
             </div>
           </div>
           {/* end sidebar */}
@@ -68,15 +66,6 @@ export default function AboutPage() {
             <p style={{ fontFamily: "Playfair Display, serif", fontWeight: 700, fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--text-light)", marginBottom: 20 }}>
               Our Story
             </p>
-            <div className="flex flex-col items-center mb-8">
-   <img 
-    src="/cindy-zheng.jpg" 
-    alt="Cindy Zheng - Founder of HealthBridge" 
-    className="rounded-full w-48 h-48 object-cover shadow-lg"
-  />
-  <p className="text-sm text-gray-600 mt-2">Cindy Zheng, Founder</p>
-</div>
-            
 
             <p style={{ marginBottom: 28 }}>
               HealthBridge was founded by Cindy Zheng, who spent a summer at a rehabilitation center in Brooklyn. There, she watched elderly Chinese patients struggle to communicate their needs — not just because of language, but because the system wasn&apos;t built for them.
