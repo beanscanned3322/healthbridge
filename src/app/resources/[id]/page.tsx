@@ -1,7 +1,29 @@
 "use client";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
+
+const PdfViewer = dynamic(() => import("@/components/PdfViewer"), {
+  ssr: false,
+  loading: () => (
+    <div
+      style={{
+        background: "white",
+        border: "1px solid var(--border)",
+        borderRadius: 12,
+        minHeight: 400,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <p style={{ fontFamily: "Plus Jakarta Sans, sans-serif", fontSize: 14, color: "var(--text-muted)" }}>
+        Loading PDF viewer…
+      </p>
+    </div>
+  ),
+});
 
 const resources = [
   {
@@ -13,6 +35,7 @@ const resources = [
     time: "Self-paced",
     tags: ["MCAT", "Shadowing", "Volunteering"],
     featured: true,
+    pdf: "/library/01_PreMed_Starter_Guide.pdf",
   },
   {
     id: 2,
@@ -23,6 +46,7 @@ const resources = [
     time: "3–6 months",
     tags: ["MCAT", "Study guides"],
     featured: false,
+    pdf: "/library/02_Free_MCAT_Resources.pdf",
   },
   {
     id: 3,
@@ -43,6 +67,7 @@ const resources = [
     time: "1 hour",
     tags: ["Internships", "Community health"],
     featured: false,
+    pdf: "/library/03_Community_Health_Internships.pdf",
   },
   {
     id: 5,
@@ -53,6 +78,7 @@ const resources = [
     time: "45 min",
     tags: ["Policy", "Economics", "Advocacy"],
     featured: true,
+    pdf: "/library/04_Health_Policy_Careers.pdf",
   },
   {
     id: 6,
@@ -63,6 +89,7 @@ const resources = [
     time: "2–3 hours",
     tags: ["Economics", "Health systems"],
     featured: false,
+    pdf: "/library/05_Health_Economics_Crash_Course.pdf",
   },
   {
     id: 7,
@@ -73,6 +100,7 @@ const resources = [
     time: "1 hour",
     tags: ["RN", "NP", "CNA"],
     featured: true,
+    pdf: "/library/06_Nursing_Career_Pathway.pdf",
   },
   {
     id: 8,
@@ -83,6 +111,7 @@ const resources = [
     time: "Ongoing",
     tags: ["Volunteering", "Clinical experience"],
     featured: false,
+    pdf: "/library/07_Free_Healthcare_Volunteering.pdf",
   },
   {
     id: 9,
@@ -93,6 +122,7 @@ const resources = [
     time: "Varies",
     tags: ["Financial aid", "Scholarships"],
     featured: true,
+    pdf: "/library/08_Scholarships_for_PreHealth.pdf",
   },
   {
     id: 10,
@@ -103,6 +133,7 @@ const resources = [
     time: "2–4 hours",
     tags: ["Personal statement", "Applications"],
     featured: false,
+    pdf: "/library/09_Personal_Statement_Guide.pdf",
   },
 ];
 
@@ -330,70 +361,51 @@ export default function ResourcePage({ params }: { params: Promise<{ id: string 
           </div>
         </div>
 
-        {/* Placeholder content */}
-        <div style={{
-          background: "white",
-          border: "1px solid var(--border)",
-          borderRadius: 12,
-          padding: "40px",
-          textAlign: "center",
-        }}>
+        {/* PDF viewer */}
+        {resource.pdf ? (
+          <PdfViewer key={resource.pdf} src={resource.pdf} title={resource.title} accent={meta.color} />
+        ) : (
           <div style={{
-            width: 64,
-            height: 64,
-            borderRadius: "50%",
-            background: meta.light,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            margin: "0 auto 24px",
-            fontSize: 32,
+            background: "white",
+            border: "1px solid var(--border)",
+            borderRadius: 12,
+            padding: "40px",
+            textAlign: "center",
           }}>
-            📄
-          </div>
-          <h2 style={{
-            fontFamily: "Playfair Display, serif",
-            fontWeight: 700,
-            fontSize: 24,
-            color: "var(--ink)",
-            marginBottom: 12,
-          }}>
-            Resource Content Coming Soon
-          </h2>
-          <p style={{
-            fontFamily: "Plus Jakarta Sans, sans-serif",
-            fontSize: 15,
-            color: "var(--text-muted)",
-            lineHeight: 1.75,
-            maxWidth: 480,
-            margin: "0 auto 24px",
-          }}>
-            This resource page is a placeholder. The full content for {resource.title} will be added here soon.
-          </p>
-          <Link 
-            href="/resources"
-            style={{
-              display: "inline-flex",
+            <div style={{
+              width: 64,
+              height: 64,
+              borderRadius: "50%",
+              background: meta.light,
+              display: "flex",
               alignItems: "center",
-              gap: 8,
-              background: meta.color,
-              color: "white",
-              padding: "12px 24px",
-              borderRadius: 4,
+              justifyContent: "center",
+              margin: "0 auto 24px",
+              fontSize: 32,
+            }}>
+              📄
+            </div>
+            <h2 style={{
               fontFamily: "Playfair Display, serif",
               fontWeight: 700,
-              fontSize: 12,
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-              textDecoration: "none",
-            }}
-          >
-            Browse All Resources
-            <svg width="14" height="14" fill="none" viewBox="0 0 16 16">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </Link>
-        </div>
+              fontSize: 24,
+              color: "var(--ink)",
+              marginBottom: 12,
+            }}>
+              Resource Content Coming Soon
+            </h2>
+            <p style={{
+              fontFamily: "Plus Jakarta Sans, sans-serif",
+              fontSize: 15,
+              color: "var(--text-muted)",
+              lineHeight: 1.75,
+              maxWidth: 480,
+              margin: "0 auto 24px",
+            }}>
+              This resource page is a placeholder. The full content for {resource.title} will be added here soon.
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
